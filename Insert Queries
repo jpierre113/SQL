@@ -1,0 +1,23 @@
+insert into location (locationid, airplanemodel, city, state, country) values (0001, 'ABC', 'Queens', 'NY', 'USA' );
+insert into location (locationid, airplanemodel, city, state, country) values (0002, 'DEF', 'Chicago', 'IL', 'USA' );
+insert into location (locationid, airplanemodel, city, state, country) values (0003, 'GHI', 'Yonkers', 'NY', 'USA' );
+insert into location (locationid, airplanemodel, city, state, country) values (0004, 'ABC', 'Hono', 'HI', 'USA' );
+insert into location (locationid, airplanemodel, city, state, country) values (0005, 'ABC', 'Orlando', 'FL', 'USA' );
+
+insert into standardcustomer (scustomerid, promodiscountcode, promodiscountdesc) values (0001, 'x1qwr', '20% off flight');
+insert into standardcustomer (scustomerid, promodiscountcode, promodiscountdesc) values (0002, 'Takeoff', '10% off for family booking');
+insert into standardcustomer (scustomerid, promodiscountcode, promodiscountdesc) values (0003, 'MEMORIAL', '50% off flight');
+insert into standardcustomer (scustomerid, promodiscountcode, promodiscountdesc) values (0004, 'Summer', '1 additional luggage free');
+insert into standardcustomer (scustomerid, promodiscountcode, promodiscountdesc) values (0005, 'N/A', 'No Discount');
+
+insert into customer (customerid, firstname, middlename, lastname, address, city, state, zipcode,gender, phone,email, passenger_type) values (0001, 'Grace', 'Quinn', 'Wilkens', '123 Street', 'Glennwood', 'NJ','12345','F','347 ','grace@gmail.com', 'S');
+insert into customer (customerid, firstname, middlename, lastname, address, city, state, zipcode,gender, phone,email, passenger_type) values (0002, 'Kyle', 'Gray', 'Wilkens', '123 Street', 'Glennwood', 'NJ','12345','M','347 ','kyle@gmail.com', 'S');
+insert into customer (customerid, firstname, middlename, lastname, address, city, state, zipcode,gender, phone,email, passenger_type) values (0003, 'Nene', 'Ariah', 'Wilkens', '123 Street', 'Glennwood', 'NJ','12345','F','347 ','nene@gmail.com', 'S');
+insert into customer (customerid, firstname, middlename, lastname, address, city, state, zipcode,gender, phone,email, passenger_type) values (0004, 'Morgan', 'Omor', 'Jenkins', '34 Street', 'New York', 'NY','10002','M','212', 'mjenkins@yahoo.com', 'F');
+insert into customer (customerid, firstname, middlename, lastname, address, city, state, zipcode,gender, phone,email, passenger_type) values (0005, 'Fran', 'Dennis', 'Brown', '109 Street', 'Amster', 'IL','15612','M','817','itsfran@hotmail.com', 'S');
+
+insert into airline (airlineid, airlinename, address, city, state, zipcode, country) values (0001, 'JetBlue', '33 Hudson', 'LIC', 'NY', '12345', 'USA');
+insert into airline (airlineid, airlinename, address, city, state, zipcode, country) values (0002, 'Carib', '83 Bacolet', 'TT', 'NA', '99990', 'Tobago');
+insert into airline (airlineid, airlinename, address, city, state, zipcode, country) values (0003, 'Ary', '411 West', 'Carol', 'WA',  '44123', 'USA');
+insert into airline (airlineid, airlinename, address, city, state, zipcode, country) values (0004, 'Valence', '21 East', 'FR','FR', '84229', 'France');
+insert into airline (airlineid, airlinename, address, city, state, zipcode, country) values (0005, 'Glower', '00 Grand', 'TT', 'TT','99990', 'Tobago');
