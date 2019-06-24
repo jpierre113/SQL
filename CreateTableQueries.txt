@@ -1,0 +1,132 @@
+-- customer table
+create table customer (
+customerid number(4) NOT NULL,
+firstname varchar2(10) NOT NULL,
+middlename varchar2(10) NULL,
+lastname varchar2(10) NOT NULL,
+address varchar2(12) NOT NULL,
+city varchar2(13) NOT NULL,
+state char(2) NOT NULL,
+zipcode char(5) NOT NULL,
+gender char(1) NOT NULL,
+phone varchar2(12) NOT NULL,
+email varchar2(30) NULL,
+passenger_type char(1) NOT NULL,
+constraint customer_pk primary key (customerid));
+
+-- standard
+create table standardcustomer (
+scustomerid number(4) NOT NULL,
+promodiscountcode varchar2(10) NULL,
+promodiscountdesc varchar2(30) NULL,
+constraint standard_pk primary key (scustomerid),
+constraint fk_standard foreign key (scustomerid) REFERENCES customer(customerid));
+
+-- frequent flyer
+create table frequentflyer (
+frequent_flyerno number(4) NOT NULL,
+frequent_flyermileage number(10) NOT NULL,
+mileage_expirationdate date NOT NULL,
+constraint frequent_pk primary key (frequent_flyerno),
+constraint fk_frequent foreign key (frequent_flyerno) REFERENCES customer(customerid));
+
+-- travel agency
+create table travelagency (
+agencyid number(4) NOT NULL,
+agencyname varchar2(10) NOT NULL,
+agencyaddress varchar2(10) NOT NULL,
+agencyphone varchar2(12) NOT NULL,
+booking_agentname varchar2(15) NOT NULL,
+agencydiscountcode varchar2(10)  NULL,
+agencydiscount_amount number(4) NULL,
+agencydiscount_desc varchar2(30) NOT NULL,
+constraint agency_pk primary key (agencyid),
+constraint fk_agency foreign key (agencyid) REFERENCES customer(customerid));
+
+-- us military
+create table usmilitary (
+militaryid number(4) NOT NULL,
+military_branch varchar2(10) NOT NULL,
+military_discountcode varchar2(10) NOT NULL,
+military_discountdesc varchar2(30) NOT NULL,
+constraint military_pk primary key (militaryid)
+constraint fk_military foreign key (militaryid) REFERENCES customer(customerid));
+
+-- reservation 
+create table reservation (
+reservationid number(4) NOT NULL,
+customerid number(4) NOT NULL,
+flightid number(6) NOT NULL,
+reservationdate date NOT NULL,
+seatno char(3) NOT NULL,
+totalcost number(4) NOT NULL,
+travelclasscode number(2) NOT NULL,
+travelclassdesc varchar2(15) NOT NULL,
+statuscode number(2) NOT NULL,
+statusdesc varchar2(20) NOT NULL,
+bookingmethodcode number(2) NOT NULL,
+bookingmethoddesc varchar2(20) NOT NULL,
+constraint reservation_pk primary key (reservationid),
+constraint fk_customerres foreign key (customerid) REFERENCES customer(customerid),
+constraint fk_flightres foreign key (flightid) REFERENCES flights(flightid));
+
+-- flights
+create table flights (
+flightid number(6) NOT NULL,
+customerid number(4) NOT NULL,
+airplaneid number(6) NOT NULL,
+destinationcountry varchar2(10) NOT NULL,
+destinationcity varchar2(10) NOT NULL,
+destinationairport varchar2(12) NOT NULL,
+departuredate date NOT NULL,
+departtime number(4) NOT NULL,
+arrivaltime number(4) NOT NULL,
+flightdistance number(4) NOT NULL,
+flightstatuscode number(2) NOT NULL,
+flightstatuscodedesc varchar2(20) NOT NULL,
+constraint flights_pk primary key (flightid),
+constraint fk_customer foreign key (customerid) REFERENCES customer(customerid));
+
+--airplane
+create table airplane(
+airplaneid number(4) NOT NULL,
+airlineid number(4) NOT NULL,
+airplanemodel varchar2(10) NOT NULL,
+modelyear number(4) NULL,
+manufacturerid varchar2(10) NOT NULL,
+manufacturername varchar2(10) NOT NULL,
+seatcapacity number(2) NOT NULL,
+landingtypecode number(2) NOT NULL,
+landingcodedesc varchar2(20) NOT NULL,
+constraint airplane_pk primary key (airplaneid),
+constraint fk_airplane foreign key (airlineid) REFERENCES airline(airlineid));
+
+--airport
+create table airport(
+airportid number(4) NOT NULL,
+airlineid number(4) NOT NULL,
+airportname varchar2(10) NOT NULL,
+owningcompany varchar2(10) NOT NULL,
+landingtype varchar2(13) NOT NULL,
+constraint airport_pk primary key (airportid),
+constraint fk_airport foreign key (airlineid) REFERENCES airline(airlineid));
+
+--location
+create table location(
+locationid number(4) NOT NULL,
+airplanemodel varchar2(10) NOT NULL,
+city varchar2(13) NOT NULL,
+state char(2) NOT NULL,
+country varchar2(13) NOT NULL,
+constraint location_pk primary key (locationid));
+
+--airline
+create table airline(
+airlineid number(4) NOT NULL,
+airlinename varchar2(10) NOT NULL,
+address varchar2(10) NOT NULL,
+city varchar2(13) NOT NULL,
+state char(2) NOT NULL,
+zipcode char(5) NOT NULL,
+country varchar2(13) NOT NULL,
+constraint airline_pk primary key (airlineid));
